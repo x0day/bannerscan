@@ -1,5 +1,6 @@
 #coding=utf-8
 __author__ = 'DM_'
+#Modifed by le4f
 
 import threading
 import requests
@@ -36,11 +37,13 @@ PORTS = (80,
 
 
 PATHS = ('/robots.txt',
+         '/admin/',
          '/manager/html/',
          '/jmx-console/',
+         '/web-console/',
          '/jonasAdmin/',
-         '/',
-         '/admin/',
+         '/manager/',
+         '/install/',
          '/ibm/console/logon.jsp',
          '/axis2/axis2-admin/',
          '/CFIDE/administrator/index.cfm',
@@ -48,13 +51,26 @@ PATHS = ('/robots.txt',
          '/fckeditor/',
          '/fck/',
          '/FCK/',
+         '/HFM/',
+         '/WEB-INF/',
          '/ckeditor/',
          '/console/',
          '/phpMyAdmin/',
          '/Struts2/index.action',
          '/index.action',
          '/phpinfo.php',
-         '/info.php'
+         '/info.php',
+         '/1.php',
+         '/CHANGELOG.txt',
+         '/LICENSE.txt',
+         '/readme.html',
+         '/cgi-bin/',
+         '/invoker/',
+         '/.svn/',
+         '/test/',
+         '/CFIDE/',
+         '/.htaccess',
+         '/.git/'
 )
 
 HTML_LOG_TEMPLATE="""
@@ -164,11 +180,11 @@ def retiplst(ip):
     iplst = []
     if ip:
         if re.match(ipPattern, ip):
-            print "[*]job: %s \r" % ip
+            print "[*] job: %s \r" % ip
             iplst = getiplst(ip)
             return iplst
         else:
-            print "[!]not a valid ip given."
+            print "[!] not a valid ip given."
             exit()
 
 def retiprangelst(iprange):
@@ -178,11 +194,11 @@ def retiprangelst(iprange):
         ip = ips[0] + "." + ips[1] + "." + ips[2] + "." + "1"
         ipstart = int(ips[3])
         ipend = int(ips[4]) + 1
-        print "[*]job: %s.%s - %s" % (ips[0] + "." + ips[1] + "." + ips[2], ipstart, ipend)
+        print "[*] job: %s.%s - %s" % (ips[0] + "." + ips[1] + "." + ips[2], ipstart, ipend)
         iplst = getiplst(ip, ipstart, ipend)
         return iplst
     else:
-        print "[!]not a valid ip range given."
+        print "[!] not a valid ip range given."
         exit()
 
 def ip2int(s):
