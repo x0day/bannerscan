@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Bannerscan by wh01sDM</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Bannerscan</h1>
+        <p>http://x0day.me/archives/bannerscan-py.html</p>
+
+        <p class="view"><a href="https://github.com/wh01sDM/bannerscan">View the Project on GitHub <small>wh01sDM/bannerscan</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/wh01sDM/bannerscan/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/wh01sDM/bannerscan/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/wh01sDM/bannerscan">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="bannerscan" class="anchor" href="#bannerscan"><span class="octicon octicon-link"></span></a>bannerscan</h1>
+
+<p>Require: Python2.6+ requests</p>
+
+<h2>
+<a name="%E7%AE%80%E8%BF%B0" class="anchor" href="#%E7%AE%80%E8%BF%B0"><span class="octicon octicon-link"></span></a>简述</h2>
+
+<hr><p>起初是90sec一个帖子中的代码(见参考[1])，看了之后感觉很不错。当然工作内容nmap也可以完成。
+不过在实际比较后决定还是用python脚本完成。</p>
+
+<h2>
+<a name="%E4%BC%98%E5%8C%96" class="anchor" href="#%E4%BC%98%E5%8C%96"><span class="octicon octicon-link"></span></a>优化</h2>
+
+<hr><p>所以也算是很久以前的一个小项目，在这里优化了一些地方后分享：
+1，改用requests,人性化，方便后续修改。</p>
+
+<p>2，扫描时不跟随302跳转，在做大部分(80%)目录探测时是不需要做自定义404识别的。因为这种情况下不跟随302跳转返回的就是404。
+    但是有些情况(10%)下不跟随302跳转还是会返回200，在尝试一些自定义404探测的方法与效率综合考虑后还是放弃了这个方法。</p>
+
+<p>3，支持自定义ip段扫描，支持从文件中读取IP，IP段。</p>
+
+<p>4, 优化的html报告。
+   报告中IP是按照顺便排列。注意这里不能直接把keys取出来sort。因为IP的排序方式不是直接安装大小排列。这里需要另外写方法。
+   见参考[2]</p>
+
+<h2>
+<a name="%E6%88%AA%E5%9B%BE" class="anchor" href="#%E6%88%AA%E5%9B%BE"><span class="octicon octicon-link"></span></a>截图</h2>
+
+<hr><p><img src="http://x0day-typechoupload.stor.sinaapp.com/4272267418.png" alt=""><img src="http://x0day-typechoupload.stor.sinaapp.com/3429486085.png" alt=""></p>
+
+<h2>
+<a name="%E5%8F%82%E8%80%83" class="anchor" href="#%E5%8F%82%E8%80%83"><span class="octicon octicon-link"></span></a>参考</h2>
+
+<hr><p>[1]<a href="https://forum.90sec.org/forum.php?mod=viewthread&amp;tid=6261">https://forum.90sec.org/forum.php?mod=viewthread&amp;tid=6261</a>
+[2]<a href="http://blog.daxuxu.info/2013/04/python-ip%E6%8E%92%E5%BA%8F.html">http://blog.daxuxu.info/2013/04/python-ip%E6%8E%92%E5%BA%8F.html</a>
+[3]<a href="http://drops.wooyun.org/tools/427">http://drops.wooyun.org/tools/427</a></p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/wh01sDM">wh01sDM</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
